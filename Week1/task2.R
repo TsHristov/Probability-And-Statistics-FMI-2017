@@ -8,17 +8,9 @@
 
 require(graphics)
 
-tails.count <- c(0:10)
+tails.count = c(0:10)
 
-probabilites <- c()
-
-i <- 0
-
-while(i < 10) {
-    res <- choose(10, i)
-    probabilites <- c(probabilites, res)
-    i <- i + 1
-}
+probabilites = choose(10, c(0:10))
 
 result = matrix(
     c(tails.count, probabilites),
