@@ -1,16 +1,14 @@
 ## Use the built-in data.frame structure mtcars to:
-
-## 1. Select only those cars with 8 cylinders
+## -Select only those cars with 8 cylinders
+## -Find mean and median of mpg for all cars with 5 gears
 
 ## Load mtcars data:
 data(mtcars)
 
-## Select mtcars subset with cars with 8 cylinders:
+## Select mtcars subset consisting of cars with 8 cylinders:
 eight.cylinders = mtcars[mtcars$cyl == 8, ]
 
-## 2. Find mean and median of mpg for all cars with 5 gears
-
-## Select mtcars subset with cars with 5 gears:
+## Select mtcars subset consisting of cars with 5 gears:
 five.gears = mtcars[mtcars$gear == 5, ]
                                           
 ## From five.gears take the mpg column:
