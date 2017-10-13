@@ -22,7 +22,7 @@ while(i < 10) {
 
 result = matrix(
     c(tails.count, probabilites),
-    nrow = 10,
+    nrow = 11,
     ncol = 2,
     dimnames = list(NULL, c("Tails count", "Number of tosses")))
 
