@@ -6,7 +6,7 @@
 ##  Visualize the result.
 
 ## Load the survey data from "survey.csv":
-survey.data = read.csv("survey.csv")
+survey.data = read.csv("Data/survey.csv")
 
 ## Select the sex category:
 sex.categories = survey.data$Sex
@@ -18,6 +18,12 @@ smoke.categories = survey.data$Smoke
 combined.categories = table(sex.categories, smoke.categories)
 
 ## Plot the result using barplot():
-png(filename="barplot.png")
 barplot(combined.categories, legend=levels(survey.data$Sex))
+
+## Create a table with smoke frequency:
+smoke.frequency = table
+
+## Create pie chart of smoke.frequency using pie():
+pie(smoke.frequency)
+
 
