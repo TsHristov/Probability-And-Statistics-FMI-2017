@@ -1,4 +1,4 @@
-## Using the "MASS" package, perform on "survey" table the following:
+x## Using the "MASS" package, perform on "survey" table the following:
 ## -Use barplot() to visualize the Sex and Smoke information.
 ## -Use pie() to visualize the smoking frequency.
 ## -Use histogram() to visualize the Pulse information.
@@ -29,8 +29,10 @@ pie(smoke.frequency)
 ## Select the Pulse data from the survey:
 pulse.data = survey.data$Pulse
 
-## Create a histogram for the pulse.data:
-hist(pulse.data)
+## Remove NA values from pulse.data:
+pulse.data = pulse.data[!is.na(pulse.data)]
 
-
+## Create a histogram for the pulse.data + it`s density:
+hist(pulse.data, probability=TRUE)
+lines(density(pulse.data), col='red')
 
