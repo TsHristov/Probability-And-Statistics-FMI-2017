@@ -26,4 +26,11 @@ smoke.frequency = table
 ## Create pie chart of smoke.frequency using pie():
 pie(smoke.frequency)
 
+## Select the Pulse data from the survey:
+pulse.data = survey.data$Pulse
+
+## Create a histogram for the pulse.data:
+hist(pulse.data)
+
+
 
