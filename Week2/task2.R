@@ -1,4 +1,4 @@
-x## Using the "MASS" package, perform on "survey" table the following:
+## Using the "MASS" package, perform on "survey" table the following:
 ## -1.Use barplot() to visualize the Sex and Smoke information.
 ## -2.Use pie() to visualize the smoking frequency.
 ## -3.Use histogram() to visualize the Pulse information.
@@ -23,7 +23,7 @@ barplot(combined.categories, legend=levels(survey.data$Sex))
 
 ## 2.
 ## Create a table with smoke frequency:
-smoke.frequency = table
+smoke.frequency = table(smoke.categories)
 
 ## Create pie chart of smoke.frequency using pie():
 pie(smoke.frequency)
@@ -47,4 +47,4 @@ smoke.age = data.frame(survey.data$Smoke, survey.data$Age)
 ## frequency and columns corresponding to age.
 ## Display a barplot, using the smoke frequencies:
 
-barplot(table(smoke.age), legend=levels(smoke.data))
+barplot(table(smoke.age), legend=levels(smoke.categories))
