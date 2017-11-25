@@ -31,17 +31,15 @@ dice.n.throws = generate.n.die.throws(10000)
 ## Find the sum of each 3 dice throws:
 throws.sum = dice.throws.sum(dice.n.throws)
 
-
-## Monte Carlo simulation of the experiment:
+## Perform Monte Carlo simulation of the experiment:
 
 ## Create a population of the possible outcomes of 3 dice throws:
-population        = rep(c(1:6), 3)
+population  = rep(c(1:6), 3)
 
+## Sum the 3 samples (the three dice throws) from the population (x1000 times):
+sample.sum  = sapply(1:10000, function(x) sum(sample(population, 3)))
 
-## Sum the 3 samples (the three dice throws) from the population and repeat it 1000 times:
-sample.sum        = sapply(1:10000, function(x) sum(sample(population, 3)))
-
-## We observe a normal distribution of the different sums of 3 dice throws:
+## Make a comparison histogram of the two methods used:
 first.method   = data.frame(sums = throws.sum)
 second.method  = data.frame(sums = sample.sum)
 
@@ -54,4 +52,8 @@ methods.combined = rbind(first, second)
 ## Plot the comparison between the two used methods:
 ggplot(methods.combined, aes(sums, fill=name)) + geom_histogram(alpha=0.5, position='identity', binwidth=1)
 
+
+## Conclusion:
+## From the visual comparison from the two methods used, a conclusion can be drawn
+## that the sums of all dice throws form a Normal Distribution.
 
