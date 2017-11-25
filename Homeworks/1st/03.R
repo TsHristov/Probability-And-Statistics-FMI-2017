@@ -25,33 +25,46 @@ dice.throws.sum = function(dice.throws.matrix){
     return (apply(dice.throws.matrix, 1, sum))
 }
 
+## Perform Monte Carlo simulation of the experiment:
+monte.carlo.simulation = function(){
+    ## Create a population of the possible outcomes of 3 dice throws:
+    population  = rep(c(1:6), 3)
+
+    ## Sum the 3 samples (the three dice throws) from the population (x1000 times):
+    sample.sum  = sapply(1:10000, function(x) sum(sample(population, 3)))
+
+    return (sample.sum)
+}
+
+comparison.plot = function(analytic.result, monte.carlo.result){
+    ## Make a comparison histogram of the two methods used:
+    analytic.method     = data.frame(dice.sums = analytic.result)
+    monte.carlo.method  = data.frame(dice.sums = monte.carlo.result)
+
+    analytic.method$method    = 'Analytic Approach'
+    monte.carlo.method$method = 'Monte-Carlo Simulation'
+
+    ## Combine the results from the methods into one data frame:
+    methods.combined = rbind(analytic.method, monte.carlo.method)
+
+    ## Plot the comparison between the two used methods:
+    ggplot(methods.combined, aes(dice.sums, fill=method)) + geom_histogram(alpha=0.5, position='identity', binwidth=1) +
+        ggtitle("Sum of throws of 3 dice") + labs(x="Sum of dice throws", y="Count of each sum occurence", fill="Method used")
+}
+
+## Analytic approach:
+
 ## Simulate throwing 3 dices n times:
 dice.n.throws = generate.n.die.throws(10000)
-
 ## Find the sum of each 3 dice throws:
-throws.sum = dice.throws.sum(dice.n.throws)
+analytic.result = dice.throws.sum(dice.n.throws)
 
-## Perform Monte Carlo simulation of the experiment:
+## Monte Carlo simulation:
+simulation.result = monte.carlo.simulation()
 
-## Create a population of the possible outcomes of 3 dice throws:
-population  = rep(c(1:6), 3)
-
-## Sum the 3 samples (the three dice throws) from the population (x1000 times):
-sample.sum  = sapply(1:10000, function(x) sum(sample(population, 3)))
-
-## Make a comparison histogram of the two methods used:
-first.method   = data.frame(sums = throws.sum)
-second.method  = data.frame(sums = sample.sum)
-
-first.method$method  = 'Straight Experiment'
-second.method$method = 'Monte-Carlo simulation'
-
-## Combine the results from the methods into one data frame:
-methods.combined = rbind(first, second)
-
-## Plot the comparison between the two used methods:
-ggplot(methods.combined, aes(sums, fill=name)) + geom_histogram(alpha=0.5, position='identity', binwidth=1)
-
+## Create comparison histogram of the analytic approach
+## and the Monte Carlo simulation:
+comparison.plot(analytic.result, simulation.result)
 
 ## Conclusion:
 ## From the visual comparison from the two methods used, a conclusion can be drawn
