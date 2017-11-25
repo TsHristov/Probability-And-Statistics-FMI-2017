@@ -1,21 +1,21 @@
-## National education survey, finds out that 44.7% of the students
-## use Wikipedia in at least one of their homeworks. Let X be the number
-## of students that have used Wikipedia in a group of 31 students.
-## Find P(X=12):
+used.wikipedia.prob = .447
+sample.group        = 31
+students.count      = 12
 
-use.wikipedia = .447
-sample.size = 31
-all = 12
+## Using the Binomial Distribution we model the problem as
+## follows: There are 31 indepedent choices of students from
+## the group. Each one of them has the same probability
+## - .447. Each choice has two outcomes -
+## (1) the student has used Wikipedia as a source and
+## (2) the student has NOT used Wikipedia as a source.
+## We are interested in exactly 12 students from the group to have
+## used Wikipedia:
 
-## P(X<=12):
-less.than.12 = pbinom(all, sample.size, use.wikipedia)
+## Via the density function:
+prob1 = dbinom(students.count, sample.group, used.wikipedia.prob)
 
-## P(X<=11):
-less.than.11 = pbinom(all-1, sample.size, use.wikipedia)
-
-## P(X=12):
-probability.equal.12 = less.than.12 - less.than.11
-
-
-
+## Via the distribution function:
+## P(X=12) = P(X<=12) - P(X<=11):
+prob2 = pbinom(students.count, sample.group, used.wikipedia.prob) -
+        pbinom(students.count-1, sample.group, used.wikipedia.prob)
 
