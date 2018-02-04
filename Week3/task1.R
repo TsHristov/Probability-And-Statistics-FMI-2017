@@ -11,10 +11,10 @@ data(mtcars)
 cars.subset = mtcars[mtcars$gear==4 & mtcars$cyl==6,]
 
 ## Select the labels of the subset:
-cars.labels = labels(cars.subset)[[1]]
+cars.labels = rownames(cars.subset)
 
-## Create a vector with the searched cars:
+## Create a vector with cars to be searched for in the subset:
 mercedes.cars = c("Merc 280", "Merc 280C")
 
 ## Check if mercedes.cars is present in the subset:
-intersect(cars.labels, mercedes.cars)
+print(all(intersect(cars.labels, mercedes.cars) == mercedes.cars))
