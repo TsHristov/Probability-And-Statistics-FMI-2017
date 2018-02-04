@@ -40,8 +40,8 @@ hist(pulse.data, probability=TRUE)
 lines(density(pulse.data), col='red')
 
 ## 4.
-## Create a data frame with the Smoke and Age infromation:
-smoke.age = data.frame(survey.data$Smoke, survey.data$Age)
+## Create a data frame with the Smoke to Age relationship:
+smoke.age = data.frame(survey.data$Smoke, as.integer(survey.data$Age))
 
 ## Make a table with rows corresponding to the smoking
 ## frequency and columns corresponding to age.
