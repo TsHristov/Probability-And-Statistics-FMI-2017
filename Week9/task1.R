@@ -1,4 +1,5 @@
 ## Task 1:
+library('corrplot')
 
 ## Compute the iris data correlation:
 data(iris)
@@ -10,7 +11,7 @@ iris = iris[,c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")]
 print(cor(iris))
 
 ## Observations: We see that Petal.Width and Petal.Length has a correlation coefficient of
-##               0.9628654, so we can conclude that they have a stron positive relationship:
+##               0.9628654, so we can conclude that they have a strong positive relationship:
 
 ##              Sepal.Length Sepal.Width Petal.Length Petal.Width
 ## Sepal.Length    1.0000000  -0.1175698    0.8717538   0.8179411
@@ -20,6 +21,6 @@ print(cor(iris))
 
 
 ## Create visual representation of the correlations:
-## Once again, this time visually we observe the stron positive relationship between
+## Once again, this time visually we observe the strong positive relationship between
 ## Petal.Width and Petal.Length:
-pairs(iris)
+corrplot(cor(iris), method="circle")
